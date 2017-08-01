@@ -17,6 +17,19 @@ Gallery.Next = function() {
     // reset the CurrentIndex
     Gallery.CurrentIndex = 0;
   }
-  // show the current img
+  // show img
+  Gallery.Display();
+};
+
+// functionality for previous button
+Gallery.Prev = function () {
+  // if img is on anything otherthan starting ith
+  if(Gallery.CurrentIndex > 0) {
+    // move to one less index position
+    Gallery.CurrentIndex--;
+    // if you are on first img then go to last img
+  } else {
+    Gallery.CurrentIndex = (Gallery.Images.length - 1);
+  }
   Gallery.Display();
 }
