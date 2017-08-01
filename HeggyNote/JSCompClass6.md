@@ -84,3 +84,20 @@ Array.prototype.isThereThisValue = function (val) {
 
 let myArr = [23,45, 46, 48];
 console.log(myArr.isThereThisValue(54)); // output false
+
+HOMEWORK:
+Convert object literal
+into 
+1) constructor function
+2) obj literal
+1. Constructor function  >> Inheritance requ/ mult. obj needed with sam blueprint
+2. obj literal >> Simple Obj definition created on the fly
+3. Factory Pattern >> Messaging needs to be done before creating the obj.
+4. Obj constructor >> Simple Obj def. created on the fly
+  - var obj = new Object();
+5. Obj create >> Usu. for the inheritance purposes
+
+
+- BOM
+Refer to caniuse.com
+it shows we can use the certain function on BOM
