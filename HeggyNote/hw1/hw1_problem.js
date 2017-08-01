@@ -61,5 +61,23 @@ function gallery() {
 
 }
 
+// using constructor
+class CoolGuy {
+  specialTrick = nothing
+
+  CoolGuy ( trick ) {
+    specialTrick = trick
+  }
+
+  showOff() {
+    output( "Here's my trick: ", specialTrick)
+  }
+}
+
+// To make a CoolGuy instance, call the class constuctor
+Joe = new CoolGuy( "jumping rope")
+
+Joe.showOff() // Here's my trick: jumping rope
+
 // everything added to prototype function
 gallery.prototype

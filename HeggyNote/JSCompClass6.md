@@ -101,3 +101,19 @@ into
 - BOM
 Refer to caniuse.com
 it shows we can use the certain function on BOM
+
+1. go to https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof
+ - document.title;  // "instanceof - JavaScript | MDN"
+ // is very important
+
+ - window.navigator
+// Navigator {vendorSub: "", productSub: "20030107", vendor: "Google Inc.", maxTouchPoints: 0, hardwareConcurrency: 8…}
+
+- window.navigator.onLine // shows you online status usesful network connectivity smartphone.  its online status flickers
+
+
+- review
+https://docs.google.com/document/d/1MIpw130J7RMc7t-mXCHeZwkWLEux4WwdS8GGZyHzuHI/edit
+
+Class 7
+- Class 5) go over BOM geolocation, animation
