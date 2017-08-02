@@ -93,5 +93,3 @@ GalleryObj.prototype.Display = function () {
 };
 
 var Gallery2 = new GalleryObj();
-
-// https://repl.it/Jt0v/4
