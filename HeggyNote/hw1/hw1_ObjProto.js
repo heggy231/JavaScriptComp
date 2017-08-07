@@ -8,88 +8,68 @@
 
 // Defining properties in an object constructor
 
-function GalleryObj() {
+// main diff constructor vs prototype
+GalleryObj.prototype.Next = function() {
+  // debugger;
+  if(this.CurrentIndex < (this.Images.length - 1)) {
+    this.CurrentIndex++;
+  } else {
+    this.CurrentIndex = 0;
+  }
+  this.Display();
+};
+
+function GalleryObj(intv, id) {
   this.Images = ['babyMeekats.jpeg', 'minx.jpeg', 'owl.jpeg'];
   this.CurrentIndex = 0;
-  // ****How does this make sense? other difference is that the interval for auto-advancing the gallery photos is now defined per instance rather than within the object definition. This lets you control the interval for each gallery instance separately.
-  this._loopInterval = setInterval(this.Next, 2500);
-  // this.Next = function() {
-  //   if(Gallery.CurrentIndex < (Gallery.Images.length - 1)) {
-  //     Gallery.CurrentIndex++;
-  //   } else {
-  //     Gallery.CurrentIndex = 0;
-  //   }
-  //   Gallery.Display();
-  // };
-  // this.Prev = function () {
-  //   if(Gallery.CurrentIndex > 0) {
-  //     Gallery.CurrentIndex--;
-  //   } else {
-  //     Gallery.CurrentIndex = (Gallery.Images.length - 1);
-  //   }
-  //   Gallery.Display();
-  // };
-  // this.prototype.Display = function () {
-  //     var photoGallery = document.getElementById('photo-gallery');
-  //     var currentImage = Gallery.Images[Gallery.CurrentIndex];
-  //     photoGallery.src = "img/" + currentImage;
-  //   };
+  this.id = id;
+  this.intv = intv;
+  var autoNext = this.Next;
+  this._loopInterval = setInterval(autoNext.bind(this), intv);
 }
 
 
-
-GalleryObj.prototype.Next = function() {
-  if(Gallery.CurrentIndex < (Gallery.Images.length - 1)) {
-    Gallery.CurrentIndex++;
-  } else {
-    Gallery.CurrentIndex = 0;
-  }
-  Gallery.Display();
-};
-
 GalleryObj.prototype.Prev = function () {
-  if(Gallery.CurrentIndex > 0) {
-    Gallery.CurrentIndex--;
+  if(this.CurrentIndex > 0) {
+    this.CurrentIndex--;
   } else {
-    Gallery.CurrentIndex = (Gallery.Images.length - 1);
+    this.CurrentIndex = (this.Images.length - 1);
   }
-  Gallery.Display();
+  this.Display();
 };
 GalleryObj.prototype.Display = function () {
-    var photoGallery = document.getElementById('photo-gallery');
-    var currentImage = Gallery.Images[Gallery.CurrentIndex];
+    var photoGallery = document.getElementById(this.id);
+    var currentImage = this.Images[this.CurrentIndex];
     photoGallery.src = "img/" + currentImage;
 };
-
 
 // create instance of custom GalleryObj
-var Gallery = new GalleryObj();
-
-
-// this.Images = ['babyMeekats.jpeg', 'minx.jpeg', 'owl.jpeg'];
+var Gallery = new GalleryObj(2000, "photo-gallery");
+var Gallery2 = new GalleryObj(1000, "photo-gallery2");
 Gallery2.Images = ['ArcticFoxSleep.jpg', 'brownbabyfox.jpg', 'babyFox.jpg'];
 
-GalleryObj.prototype.Next = function() {
-  if(Gallery2.CurrentIndex < (Gallery2.Images.length - 1)) {
-    Gallery2.CurrentIndex++;
-  } else {
-    Gallery2.CurrentIndex = 0;
-  }
-  Gallery2.Display();
-};
+// Gallery2.Images = ['ArcticFoxSleep.jpg', 'brownbabyfox.jpg', 'babyFox.jpg'];
 
-GalleryObj.prototype.Prev = function () {
-  if(Gallery2.CurrentIndex > 0) {
-    Gallery2.CurrentIndex--;
-  } else {
-    Gallery2.CurrentIndex = (Gallery2.Images.length - 1);
-  }
-  Gallery2.Display();
-};
-GalleryObj.prototype.Display = function () {
-    var photoGallery = document.getElementById('photo-gallery');
-    var currentImage = Gallery2.Images[Gallery2.CurrentIndex];
-    photoGallery.src = "img/" + currentImage;
-};
+// GalleryObj.prototype.Next = function() {
+//   if(Gallery2.CurrentIndex < (Gallery2.Images.length - 1)) {
+//     Gallery2.CurrentIndex++;
+//   } else {
+//     Gallery2.CurrentIndex = 0;
+//   }
+//   Gallery2.Display();
+// };
 
-var Gallery2 = new GalleryObj();
+// GalleryObj.prototype.Prev = function () {
+//   if(Gallery2.CurrentIndex > 0) {
+//     Gallery2.CurrentIndex--;
+//   } else {
+//     Gallery2.CurrentIndex = (Gallery2.Images.length - 1);
+//   }
+//   Gallery2.Display();
+// };
+// GalleryObj.prototype.Display = function () {
+//     var photoGallery = document.getElementById('photo-gallery');
+//     var currentImage = Gallery2.Images[Gallery2.CurrentIndex];
+//     photoGallery.src = "img/" + currentImage;
+// };
+
